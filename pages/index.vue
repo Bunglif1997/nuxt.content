@@ -20,20 +20,16 @@
       <div class="links">
         <nuxt-link to="/about">Go to about page</nuxt-link>
         <nuxt-link to="/users">Go to users list</nuxt-link>
+        <nuxt-link to="photos"> Photos</nuxt-link>  
       </div>
-      <nuxt-content :document="post"/>
+    
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  
- async asyncData({$content}){
-     const post = await $content('posts/hello').fetch()
 
-     return {post, title: post.title}
-  },
   data() {
     return {
       title: 'nuxtjsfun',
