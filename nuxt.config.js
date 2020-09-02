@@ -51,9 +51,11 @@ export default {
   */
   modules: [
     '@nuxt/content',
-    
+    '@nuxtjs/axios',
   ],
- 
+  axios: {
+    baseURL: 'https://picsum.photos'
+  },
  
   /*
   ** Build configuration
