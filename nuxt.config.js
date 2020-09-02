@@ -9,7 +9,7 @@ export default {
   ** Nuxt target
   ** See https://nuxtjs.org/api/configuration-target
   */
-  target: 'server',
+  target: 'static',
   /*
   ** Headers of the page
   ** See https://nuxtjs.org/api/configuration-head
@@ -49,14 +49,25 @@ export default {
   /*
   ** Nuxt.js modules
   */
-  modules: [
-    '@nuxt/content',
-    '@nuxtjs/axios',
-  ],
+  modules: ['@nuxt/content','@nuxtjs/axios','@nuxtjs/auth'],
   axios: {
-    baseURL: 'https://picsum.photos'
+    baseURL: 'http://localhost:12345/api'
   },
- 
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: 'login', method: 'post', propertyName: 'data.token' },
+          user: { url: 'me', method: 'get', propertyName: 'data.user' },
+          logout: false
+        }
+      }
+    },
+    redirect: {
+      login: '/login'
+    }
+  },
+
   /*
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/
